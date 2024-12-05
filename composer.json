@@ -1,0 +1,17 @@
+{
+    "name": "rabieh/web-programming",
+    "autoload": {
+        "psr-4": {
+            "Rabieh\\WebProgramming\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Doe"
+        }
+    ],
+    "require": {
+        "cboden/ratchet": "^0.4.4",
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
