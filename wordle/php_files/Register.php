@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mail->addAddress($email);
     $mail->Subject = "Acount Activation";
     $mail->Body = <<<END
-    <p>Click <a href="http://localhost:/Gin440/GroupProject/wordle/php_files/activate_account.php?token=$activation_token">here</a> to activate account.</p>
+    <p>Click <a href="http://localhost:/GroupProject-main/GroupProject-main/wordle/php_files/activate_account.php?token=$activation_token">here</a> to activate account.</p>
 
     END;
 
