@@ -23,4 +23,4 @@ Download ZIP and extract.
   - The keyboard coloring issue has been (comment in the code above the updateKeyboard function in wordleProject.js shows where the issue was)
   - The focus inconvenience has been fixed by checking if the input field is not focused rather than if wordle is focused 
 
--Welcome to my website
+-Welcome to the website, by Rabieh Hasbani, Fadi Dagher, Joe Abihabib
