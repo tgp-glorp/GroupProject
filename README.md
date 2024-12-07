@@ -15,4 +15,8 @@ Download ZIP and extract.
 
   If it works an email will be sent to verify, once verified you can login with your account and start playing
 
+  A few changes have been made after the comments received namely:
+  - The keyboard coloring issue has been (comment in the code shows where the issue was)
+  - The focus inconvenience has been fixed by checking if the input field is not focused rather than if wordle is focused 
+
 -Welcome to my website
