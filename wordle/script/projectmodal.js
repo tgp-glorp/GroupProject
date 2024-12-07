@@ -48,6 +48,7 @@ function showChallengePopup(message) {
   popup.style.left = "50%";
   popup.style.transform = "translate(-50%, -50%)";
   popup.style.backgroundColor = "white";
+  popup.style.color="green";
   popup.style.border = "2px solid black";
   popup.style.padding = "20px";
   popup.style.zIndex = "1000";
