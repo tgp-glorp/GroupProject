@@ -5,7 +5,9 @@ Download ZIP and extract.
 
   (if opening the folder of the outer GroupProject-main)
 
-  Make sure the command aligns with your file path whether opening the outer GroupProject-main or the inner one
+  Make sure the command aligns with your file path whether opening the outer GroupProject-main or the inner one as well as if any folder name changes have been made
+
+  This applies to the links found in send-pass-reset and Register.php (line 86) whereby path changes will prevent the localhost from properly finding the page
 
   Opening in localhost will result in starting at the account page
 
