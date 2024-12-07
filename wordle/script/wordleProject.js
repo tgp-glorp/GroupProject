@@ -2,7 +2,6 @@ const gridnumbers = 30; // 6 rows of 5 letters each
 let word = "";
 let tabIndex = 1;
 let isGameOver = false;
-let isWordleFocused = false;
 let isKeyboardFocused = false;
 const grid = document.querySelector("#wordleForm");
 
@@ -218,7 +217,7 @@ function handleVirtualKey(key) {
 }
 
 function updateKeyboard(key, status) {
-  const keyButton = document.querySelector(`.key[data-key="${key}"]`);
+  const keyButton = document.querySelector(`.key[data-key="${key.toUpperCase()}"]`);
   if (keyButton) {
     // Prioritize green over all other statuses
     if (status === "green") {
@@ -241,11 +240,15 @@ function updateKeyboard(key, status) {
   }
 }
 
-function checkFocus() {
-  isWordleFocused = Array.from(grid).some(
-    (cell) => cell === document.activeElement
-  );
+function inputFocus() {
+  const challInput=document.getElementById("ChallengeInput");
+  
+  let checker= challInput == document.activeElement ? true: false;
+  console.log(checker);
+  return checker;
 }
+
+//to show the restart game button once the game ends and before it starts
 function toggleButton(){
   const resetButton=document.getElementById("restart-button");
   if(resetButton.style.display=="none"){
@@ -264,8 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("keydown", (event) => {
-  checkFocus();
-  if (isWordleFocused || isKeyboardFocused) {
+  if (!inputFocus() || isKeyboardFocused) {
     isKeyboardFocused = false;
     handleKey(event);
     inputManager(event);

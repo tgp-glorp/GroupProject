@@ -8,7 +8,6 @@
 
   <!--Icons-->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
   <link rel="stylesheet" href="CSS/wordleDesignCSS.css">
   <link rel="stylesheet" href="CSS/wordleLast.css">
   <script src="script/WordleProject.js" defer></script>
@@ -299,12 +298,20 @@
 </body>
 
 <script>
-  // Variable to store the timeout reference
-  let timeoutRef;
+  // Variable to store the timeout reference for the debounce function
+let debounceTimeout;
+let timeoutRef; // For session timeout
 
-  // Function to reset the session timer when there's activity (e.g., mouse movement)
-  function resetTimer() {
-    fetch('wordle.php?reset_timer=true') // Send a request to reset the session timer
+// Debounced function to reset the timer
+function resetTimer() {
+  // Clear the debounce timeout to avoid excessive fetch calls
+  clearTimeout(debounceTimeout);
+
+  //The debounceTimeout makes sure that no excessive fetch calls are done
+  //by making sure a fetch call only occurs after a certain period of inactivity
+  debounceTimeout = setTimeout(() => {
+    // Fetch request to reset the session timer
+    fetch('wordle.php?reset_timer=true')
       .then(response => response.text())
       .catch(error => console.error('Error resetting timer:', error));
 
@@ -313,18 +320,18 @@
     timeoutRef = setTimeout(function () {
       alert("Your session has expired due to inactivity!");
       window.location.href = 'Account.php'; // Redirect after alert
-    }, <?php echo ($sessionLimit - $sessionTimer) * 1000; ?>); // session timeout
-  }
+    }, <?php echo $remainingTime * 1000; ?>); // session timeout
+  }, 2*1000); //2 seconds of inactivity for the debounce 
+}
 
-  // Monitor user activity (mouse movement, keyboard, etc.)
-  document.addEventListener('mousemove', resetTimer);
-  document.addEventListener('keydown', resetTimer);
-  document.addEventListener('click', resetTimer);
+// Monitor user activity (mouse movement, keyboard, etc.)
+document.addEventListener('mousemove', resetTimer);
+document.addEventListener('keydown', resetTimer);
+document.addEventListener('click', resetTimer);
 
-  // Trigger the session timeout alert as soon as the page loads
-  resetTimer();
+// Trigger the session timeout alert as soon as the page loads
+resetTimer();
 </script>
-
 
 
 

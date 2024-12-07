@@ -30,8 +30,13 @@ socket.onmessage = function (event) {
     let games_won=response["games_won"];
     gWon.textContent=games_won;
     const winRate=document.getElementById("winRate");
-    let winrate=Math.floor((games_won/games_played)*100);
-    winRate.textContent=winrate+"%";
+    if(games_won!=0){
+      let winrate=Math.floor((games_won/games_played)*100);
+      winRate.textContent=winrate+"%";
+    }
+    else{
+      winrate.textContent=0 +"%";
+    }
   }
   if (response["action"] == "word") {
     if (response.error) {
