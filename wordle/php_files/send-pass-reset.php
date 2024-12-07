@@ -39,7 +39,7 @@ if ($conn->affected_rows) {
     $mail->addAddress($email);
     $mail->Subject = "Password Reset";
     $mail->Body = <<<END
-    <p>Click <a href="http://localhost:/Gin440/GroupProject/wordle/php_files/reset-password.php?token=$token">here</a> to reset your password.</p>
+    <p>Click <a href="http://localhost:/GroupProject-main/GroupProject-main/wordle/php_files/reset-password.php?token=$token">here</a> to reset your password.</p>
     END;
 
 
